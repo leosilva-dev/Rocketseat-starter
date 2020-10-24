@@ -1,0 +1,53 @@
+<!-- 
+1º exercício
+Crie um botão que ao ser clicado cria um novo elemento em tela com a forma de um quadrado
+vermelho com 100px de altura e largura. Sempre que o botão for clicado um novo quadrado deve
+aparecer na tela. 
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="button">Add</button>
+    <div id="app">
+
+    </div>
+
+    <script>
+        let btn = document.querySelector(".button")
+        btn.onclick = function createRedBox(){
+
+
+            let box = document.createElement("div")
+            let app = document.querySelector("#app")
+
+            box.setAttribute("class", "square")
+            app.appendChild(box)
+
+            colorize("red", "100px", "100px", "5px")
+
+            
+            function colorize(color, width, height, margin){
+                let elements = document.querySelectorAll(".square");
+
+                for(let element of elements){
+                    element.style.backgroundColor = color;
+                    element.style.width = width;
+                    element.style.height = height;
+                    element.style.margin = margin;
+                }
+            }
+            
+        }
+
+        
+
+        
+    </script>
+</body>
+</html>
