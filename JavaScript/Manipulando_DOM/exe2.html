@@ -33,7 +33,7 @@ var newColor = getRandomColor(); // #E943F0
 
     <script>
         let btn = document.querySelector(".button")
-        let squareElement = document.querySelectorAll(".square")
+        // let squareElement = document.querySelectorAll(".square")
 
         btn.onclick = function createRedBox(){
 
@@ -44,15 +44,15 @@ var newColor = getRandomColor(); // #E943F0
             box.setAttribute("class", "square")
             app.appendChild(box)
 
-            colorize("red", "100px", "100px", "5px")
+            colorize("red", "100px", "100px", "5px", ".square")
 
             
             
             
         }
 
-        function colorize(color, width, height, margin){
-                let elements = document.querySelectorAll(".square");
+        function colorize(color, width, height, margin, classe){
+                let elements = document.querySelectorAll(classe);
 
                 for(let element of elements){
                     element.style.backgroundColor = color;
@@ -71,11 +71,18 @@ var newColor = getRandomColor(); // #E943F0
                 return color;
             }
 
-            var newColor = getRandomColor();
-            //colorize(newColor, "100px", "100px", "5px")
-        squareElement.onclick = function a(){
-            console.log("!")
-        }
+            
+
+            for(let element of document.querySelectorAll(".square")){
+                   
+                element.onclick = a(){
+                console.log("!")
+
+                }
+
+                
+                
+            }
 
         
     </script>
