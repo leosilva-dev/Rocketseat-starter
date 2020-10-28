@@ -29,30 +29,23 @@ var nomes = ["Diego", "Gabriel", "Lucas"];
 
 function createList(name){
             
-        let li = document.createElement("li")
-        let liContent = document.createTextNode(name)
-        let list = document.getElementById("name-list")
+    let li = document.createElement("li")
+    let liContent = document.createTextNode(name)
+    let list = document.getElementById("name-list")
 
-        li.appendChild(liContent)
-        list.appendChild(li)
+    li.appendChild(liContent)
+    list.appendChild(li)
    
 }
 
 nomes.forEach(createList)
 
 function adicionar(){
-    let newName = document.getElementById("#inputName").nodeValue
-    console.log(newName)
-
-    nomes.push(newName)
-    document.getElementById("#inputName").nodeValue = ""
+    let newName = document.getElementById("inputName").value
+    createList(newName)
+    document.getElementById("inputName").value = ""
 }
-
-
-
-
-
-
+    
 
 </script>
 </html>
