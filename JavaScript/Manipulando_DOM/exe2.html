@@ -18,7 +18,7 @@ var newColor = getRandomColor(); // #E943F0
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JS</title>
     <style>
         #app{
             display: flex;
@@ -33,10 +33,9 @@ var newColor = getRandomColor(); // #E943F0
 
     <script>
         let btn = document.querySelector(".button")
-        // let squareElement = document.querySelectorAll(".square")
+        let squareElement = document.getElementsByClassName("square")
 
         btn.onclick = function createRedBox(){
-
 
             let box = document.createElement("div")
             let app = document.querySelector("#app")
@@ -45,9 +44,6 @@ var newColor = getRandomColor(); // #E943F0
             app.appendChild(box)
 
             colorize("red", "100px", "100px", "5px", ".square")
-
-            
-            
             
         }
 
@@ -71,19 +67,18 @@ var newColor = getRandomColor(); // #E943F0
                 return color;
             }
 
-            
-
-            for(let element of document.querySelectorAll(".square")){
-                   
-                element.onclick = a(){
+            btn.onmouseover = a(){
                 console.log("!")
+            }
 
-                }
-
-                
+            for(let element of squareElement){
                 
             }
 
+          
+
+
+            
         
     </script>
 </body>
