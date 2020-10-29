@@ -30,6 +30,7 @@ axios.get('https://api.github.com/users/leosilva-dev')
     .then(function(response){
         console.log(response)
     })
-    .catch(function(reject){
+    .catch(function(error){
         console.warn(error)
     })
+
