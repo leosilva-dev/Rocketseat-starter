@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS</title>
+</head>
+<body>
+
+    <input type="text" class="user">
+    <button onclick="search()">Search</button>
+    <h1 id="title"></h1>
+    <ul id="list">
+
+    </ul>
+    
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+    // 2º exercício
+    // Crie uma tela com um <input> que deve receber o nome de um usuário no Github. Após digitar o
+    // nome do usuário e clicar no botão buscar a aplicação deve buscar pela API do Github (conforme
+    // URL abaixo) os dados de repositórios do usuário e mostrá-los em tela:
+    // URL de exemplo: https://api.github.com/users/diego3g/repos
+    // Basta alterar "diego3g" pelo nome do usuário.
+    // <input type="text" name="user">
+    // <button onclick="">Adicionar</button>
+    // Depois de preencher o input e adicionar, a seguinte lista deve aparecer abaixo:
+    // <ul>
+    // <li>repo1</li>
+    // <li>repo2</li>
+    // <li>repo3</li>
+    // <li>repo4</li>
+    // <li>repo5</li>
+    // </ul>
+    
+    let repositorys
+    const ul = document.querySelector("list")
+
+    let titleElement = document.getElementById("title")
+    
+    function search(){
+        let inputElement = document.querySelector(".user")
+        let nameUser = inputElement.value || "leosilva-dev" //remover no futuro
+        inputElement.value = ""
+
+        const urlRepos = "https://api.github.com/users/"+nameUser+"/repos"
+        const urlUser = "https://api.github.com/users/"+nameUser
+        
+        axios.get(urlRepos)
+        .then(function(response){   
+            repositorys = response
+            // console.log(repositorys)
+        })
+        .catch(function(error){
+            console.warn(error)
+        })
+
+        axios.get(urlUser)
+        .then(function(response){   
+            setNameTitle(response.data.name)
+        })
+        .catch(function(error){
+            console.warn(error)
+        })
+    }
+
+    
+    
+    function setNameTitle(name){
+        let titleContent = document.createTextNode(name)
+        titleElement.innerHTML = ""
+        titleElement.appendChild(titleContent)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    // let listItem = document.createElement("li")
+    // let listItemContent = document.createTextNode(element)
+
+    // listItem.appendChild(listItemContent)
+    // ul.appendChild(listItem)
+
+
+    </script>
+</body>
+</html>
