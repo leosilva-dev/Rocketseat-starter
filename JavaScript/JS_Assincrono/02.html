@@ -17,29 +17,14 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
 
-    // 2º exercício
-    // Crie uma tela com um <input> que deve receber o nome de um usuário no Github. Após digitar o
-    // nome do usuário e clicar no botão buscar a aplicação deve buscar pela API do Github (conforme
-    // URL abaixo) os dados de repositórios do usuário e mostrá-los em tela:
-    // URL de exemplo: https://api.github.com/users/diego3g/repos
-    // Basta alterar "diego3g" pelo nome do usuário.
-    // <input type="text" name="user">
-    // <button onclick="">Adicionar</button>
-    // Depois de preencher o input e adicionar, a seguinte lista deve aparecer abaixo:
-    // <ul>
-    // <li>repo1</li>
-    // <li>repo2</li>
-    // <li>repo3</li>
-    // <li>repo4</li>
-    // <li>repo5</li>
-    // </ul>
     
-    let repositorys
-    const ul = document.querySelector("list")
-
+    
+    let repositories
+    let ul = document.getElementById("list")
     let titleElement = document.getElementById("title")
     
     function search(){
+        ul.innerHTML = '';
         let inputElement = document.querySelector(".user")
         let nameUser = inputElement.value || "leosilva-dev" //remover no futuro
         inputElement.value = ""
@@ -49,8 +34,9 @@
         
         axios.get(urlRepos)
         .then(function(response){   
-            repositorys = response
-            // console.log(repositorys)
+            repositories = response
+            setRepositories(repositories.data)
+            // console.log(repositories)
         })
         .catch(function(error){
             console.warn(error)
@@ -65,31 +51,42 @@
         })
     }
 
+    function setRepositories(repositories){
+        repositories.forEach(element => {
+            createListItem(element.name)
+        });
+    }
     
-    
+    function createListItem(name){
+        let listItem = document.createElement("li")
+        ul.appendChild(listItem)
+        listItem.innerHTML = name
+    }
+
     function setNameTitle(name){
         let titleContent = document.createTextNode(name)
         titleElement.innerHTML = ""
         titleElement.appendChild(titleContent)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    // let listItem = document.createElement("li")
-    // let listItemContent = document.createTextNode(element)
-
-    // listItem.appendChild(listItemContent)
-    // ul.appendChild(listItem)
-
 
     </script>
 </body>
 </html>
+
+<!-- // 2º exercício
+    // Crie uma tela com um <input> que deve receber o nome de um usuário no Github. Após digitar o
+    // nome do usuário e clicar no botão buscar a aplicação deve buscar pela API do Github (conforme
+    // URL abaixo) os dados de repositórios do usuário e mostrá-los em tela:
+    // URL de exemplo: https://api.github.com/users/diego3g/repos
+    // Basta alterar "diego3g" pelo nome do usuário.
+    // <input type="text" name="user">
+    // <button onclick="">Adicionar</button>
+    // Depois de preencher o input e adicionar, a seguinte lista deve aparecer abaixo:
+    // <ul>
+    // <li>repo1</li>
+    // <li>repo2</li>
+    // <li>repo3</li>
+    // <li>repo4</li>
+    // <li>repo5</li>
+    // </ul> -->
