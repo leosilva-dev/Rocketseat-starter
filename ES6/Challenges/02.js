@@ -23,6 +23,18 @@ const googler = usuarios.find(item => item.empresa == "Google")
 //----------------------------------
 
 //Unindo operações
-const idadesx2 = usuarios.map(item => item.idade*2)
-// idadesx2.find(item => item.idade <= 50)
-console.log(idadesx2)
+// Multiplique a idade de todos usuários por dois e depois realize um filtro nos usuários que possuem
+// no máximo 50 anos:
+
+const idadesx2 = usuarios
+
+idadesx2.map(item => item.idade = item.idade*2)
+
+const cinquentao = idadesx2.filter(item => item.idade <= 50)
+
+
+
+console.log(cinquentao)
+
+
+
